@@ -2,11 +2,11 @@
 
 Examples
 --------
-    ravenscope                      # auto-detect WiFi, open dashboard
-    ravenscope --simulate           # preview with the physics simulator
-    ravenscope --backend ping       # universal gateway-jitter fallback
-    ravenscope --calibrate 45       # longer baseline learning
-    ravenscope --port 9000 --no-browser
+    raven-scope                     # auto-detect WiFi, open dashboard
+    raven-scope --simulate          # preview with the physics simulator
+    raven-scope --backend ping      # universal gateway-jitter fallback
+    raven-scope --calibrate 45      # longer baseline learning
+    raven-scope --port 9000 --no-browser
 """
 
 from __future__ import annotations
@@ -35,7 +35,7 @@ _BANNER = r"""
 
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(
-        prog="ravenscope",
+        prog="raven-scope",
         description="Turn your laptop's WiFi into a live motion/presence radar.")
     p.add_argument("--backend", default="auto",
                    choices=["auto", "linux", "macos", "windows", "ping", "simulate"],
