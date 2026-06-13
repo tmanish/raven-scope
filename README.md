@@ -1,7 +1,7 @@
 # RavenScope
 
 <p align="center">
-  <img src="docs/social-card.png" alt="RavenScope — WiFi motion radar" width="100%">
+  <img src="docs/ravenscope-social-card-dark.png" alt="RavenScope — WiFi motion radar" width="100%">
 </p>
 
 <p align="center">
