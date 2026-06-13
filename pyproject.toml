@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ravenscope"
+version = "0.1.0"
+description = "Turn your laptop's WiFi into a live motion/presence radar — zero extra hardware. RuView's $0/Any-WiFi RSSI tier."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+keywords = ["wifi", "sensing", "rssi", "motion", "presence", "ruview", "csi"]
+authors = [{ name = "RavenScope" }]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: System :: Monitoring",
+]
+# Intentionally ZERO runtime dependencies — stdlib only, so it runs anywhere.
+dependencies = []
+
+[project.optional-dependencies]
+# Optional: enables RuView's CSI tier (needs CSI hardware to actually feed it).
+# On macOS/Linux this builds from source and requires a Rust toolchain.
+ruview = ["ruview>=2.0.0a1"]
+
+[project.scripts]
+ravenscope = "ravenscope.cli:main"
+
+[project.urls]
+"RuView (sensing platform this builds on)" = "https://github.com/ruvnet/RuView"
+
+[tool.setuptools]
+packages = ["ravenscope", "ravenscope.capture"]
+
+[tool.setuptools.package-data]
+ravenscope = ["web/*.html"]
