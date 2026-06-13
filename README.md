@@ -4,7 +4,7 @@
   <picture>
     <source media="(prefers-color-scheme: light)" srcset="docs/social-card-light.png">
     <source media="(prefers-color-scheme: dark)" srcset="docs/social-card-dark.png">
-    <img src="docs/social-card-dark.png" alt="RavenScope — WiFi motion radar" width="100%">
+    <img src="docs/ravenscope-social-card-dark.png" alt="RavenScope — WiFi motion radar" width="100%">
   </picture>
 </p>
 
