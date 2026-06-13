@@ -3,7 +3,7 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ravenscope"
+name = "raven-scope"
 version = "0.1.0"
 description = "Turn your laptop's WiFi into a live motion/presence radar — zero extra hardware. RuView's $0/Any-WiFi RSSI tier."
 readme = "README.md"
@@ -26,9 +26,11 @@ dependencies = []
 ruview = ["ruview>=2.0.0a1"]
 
 [project.scripts]
-ravenscope = "ravenscope.cli:main"
+raven-scope = "ravenscope.cli:main"
 
 [project.urls]
+"Homepage" = "https://github.com/tmanish/raven-scope"
+"Repository" = "https://github.com/tmanish/raven-scope"
 "RuView (sensing platform this builds on)" = "https://github.com/ruvnet/RuView"
 
 [tool.setuptools]

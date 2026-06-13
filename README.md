@@ -1,7 +1,11 @@
 # RavenScope
 
 <p align="center">
-  <img src="docs/ravenscope-social-card-dark.png" alt="RavenScope — WiFi motion radar" width="100%">
+  <picture>
+    <source media="(prefers-color-scheme: light)" srcset="docs/social-card-light.png">
+    <source media="(prefers-color-scheme: dark)" srcset="docs/social-card-dark.png">
+    <img src="docs/social-card-dark.png" alt="RavenScope — WiFi motion radar" width="100%">
+  </picture>
 </p>
 
 <p align="center">
@@ -19,7 +23,7 @@ Because WiFi travels through interior walls, a body in the radio path registers 
 
 It runs entirely on commodity hardware using only the Python standard library, and it's built to be forked and extended.
 
-<!-- 
+<!-- Tip: drop a screenshot of the running dashboard at docs/dashboard.png and uncomment:
 ![RavenScope dashboard](docs/dashboard.png)
 -->
 
@@ -28,8 +32,8 @@ It runs entirely on commodity hardware using only the Python standard library, a
 Requires Python 3.8+ and nothing else — no `pip install`, no compiler, no downloads.
 
 ```bash
-git clone https://github.com/tmanish/ravenscope.git
-cd ravenscope
+git clone https://github.com/tmanish/raven-scope.git
+cd raven-scope
 python3 -m ravenscope
 ```
 
@@ -81,7 +85,7 @@ python3 -m ravenscope --backend ping         # universal fallback (gateway RTT j
 python3 -m ravenscope --calibrate 45
 ```
 
-It can also be installed as a console command with `pip install -e .`, after which `ravenscope` runs it directly.
+It can also be installed as a console command with `pip install -e .`, after which `raven-scope` runs it directly.
 
 ### Calibration matters
 
