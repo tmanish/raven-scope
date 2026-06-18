@@ -2,9 +2,9 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: light)" srcset="docs/social-card.png">
-    <source media="(prefers-color-scheme: dark)" srcset="docs/ravenscope-social-card-dark.png">
-    <img src="docs/ravenscope-social-card-dark.png" alt="RavenScope — WiFi motion radar" width="100%">
+    <source media="(prefers-color-scheme: light)" srcset="docs/social-card-light.png">
+    <source media="(prefers-color-scheme: dark)" srcset="docs/social-card-dark.png">
+    <img src="docs/social-card-dark.png" alt="RavenScope — WiFi motion radar" width="100%">
   </picture>
 </p>
 
@@ -23,9 +23,11 @@ Because WiFi travels through interior walls, a body in the radio path registers 
 
 It runs entirely on commodity hardware using only the Python standard library, and it's built to be forked and extended.
 
-<!-- Tip: drop a screenshot of the running dashboard at docs/dashboard.png and uncomment:
-![RavenScope dashboard](docs/dashboard.png)
--->
+**See it running** — detecting movement, then escalating to continuous activity. macOS, built-in WiFi, a single live access point, no extra hardware:
+
+![RavenScope detecting motion](docs/dashboard-motion.png)
+
+![RavenScope escalating to continuous activity](docs/dashboard-active.png)
 
 ## Quick start
 
