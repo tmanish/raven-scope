@@ -20,27 +20,29 @@ from .dsp import LinkStats
 
 
 def fuse_energy(links: Dict[str, LinkStats]) -> Tuple[float, int]:
-    """Coherence-weighted, trimmed fusion of per-link motion energy.
+    """Fuse per-link motion energy into one room-energy value (~0..1).
+
+    Motion perturbs the link(s) whose path a moving body actually crosses — not
+    every visible access point. Averaging across all links therefore lets quiet
+    or *stale* illuminators drown out the one link that is moving. This bites
+    hardest on macOS, where the connected AP is read live every call but
+    neighbouring APs come from the system scan and only refresh every ~30-60s,
+    so between scans they report zero motion. We instead fuse toward the
+    most-perturbed trustworthy illuminator, so quiet/frozen links can never pull
+    the result down; they still contribute to the radar and to direction.
 
     Returns (fused_energy in ~0..1, n_reliable_links).
     """
-    contribs: List[Tuple[float, float]] = []  # (energy, weight)
-    for s in links.values():
-        if s.samples < 5:
-            continue
-        w = 0.25 + 0.75 * s.coherence  # trustworthy links count more
-        contribs.append((s.energy, w))
-    if not contribs:
+    eligible = [s for s in links.values() if s.samples >= 5]
+    if not eligible:
         return 0.0, 0
 
-    # trim the single strongest contributor a touch to resist one flaky AP
-    contribs.sort(key=lambda c: c[0])
-    if len(contribs) >= 4:
-        contribs = contribs[:-1]  # drop the max
+    # Prefer coherence-gated links; fall back to any with enough samples.
+    pool = [s for s in eligible if s.reliable] or eligible
+    # The strongest reliable illuminator drives detection. A quiet/stale link
+    # has ~0 energy and simply loses the max, so it cannot dilute a real signal.
+    fused = max(s.energy for s in pool)
 
-    num = sum(e * w for e, w in contribs)
-    den = sum(w for _, w in contribs)
-    fused = num / den if den else 0.0
     n_reliable = sum(1 for s in links.values() if s.reliable)
     return fused, n_reliable
 
